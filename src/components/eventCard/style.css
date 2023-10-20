@@ -39,6 +39,7 @@
   
 .disable-btn {
     background-color: var(--secondary);
+    cursor: not-allowed;
 }
 
 .time {

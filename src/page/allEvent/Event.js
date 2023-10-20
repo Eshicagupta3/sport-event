@@ -8,13 +8,6 @@ import { REMOVE_EVENT, SELECT_EVENT } from "../../context/action";
 const SingleEvent = React.memo(
   ({ event, selectedEvents, onRemoveEventClick }) => {
     const { dispatch } = useContext(EventFnContext);
-    const onEventClick = useCallback(() => {
-      console.log("event click",event)
-      dispatch({
-        type: SELECT_EVENT,
-        payload: event,
-      });
-    }, [dispatch, event]);
     const isEventSelected = userEventExist(event.id, selectedEvents);
     const isEventDisable = useMemo(() => {
       return (
@@ -23,6 +16,16 @@ const SingleEvent = React.memo(
           eventClash(event.start_time, event.end_time, selectedEvents))
       );
     }, [selectedEvents, event, isEventSelected]);
+    const onEventClick = useCallback(() => {
+      if (isEventDisable) {
+        return;
+      }
+      dispatch({
+        type: SELECT_EVENT,
+        payload: event,
+      });
+    }, [dispatch, event, isEventDisable]);
+
     const btnText = isEventSelected ? "REMOVE" : "SELECT";
     return (
       <EventCard
