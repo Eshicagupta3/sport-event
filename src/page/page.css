@@ -1,0 +1,77 @@
+.sport-header {
+  border-bottom: 1px solid var(--secondary);
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-img {
+  width: 40px;
+  margin-right: 16px;
+  height: 40px;
+  background: var(--primary);
+  border-radius: 100%;
+}
+
+.header-tabs {
+  display: flex;
+  gap: 16px;
+}
+.header-tabs a {
+  color: var(--grey800);
+  text-decoration: solid;
+}
+
+.sport-events {
+  padding: 64px;
+}
+
+.allevents-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  padding: 0;
+  justify-content: flex-start;
+}
+
+.page-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  gap: 16px;
+}
+
+.header-tabs .active {
+  color: var(--primary);
+}
+
+.allevent {
+  padding: 16px;
+  background-color: var(--primary);
+  border: none;
+  width: max-content;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border-radius: 8px;
+  height: 48px;
+}
+
+.allevent a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+@media screen and (max-width: 480px) {
+    .allevents-container {
+        justify-content: center;
+    }
+}

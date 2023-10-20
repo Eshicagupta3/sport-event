@@ -1,0 +1,51 @@
+.event-card {
+    border: 1px solid var(--secondary);
+    padding: 16px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    align-items: center;
+    
+}
+.card-selected button {
+    color: var(--primary);
+    background-color: var(--white);
+    border: 1px solid var(--primary);
+}
+.card-title {
+    font-weight: bold;
+}
+.event-card p,time {
+    color:  var(--grey800);
+    margin-bottom: 16px;
+}
+.card-btn {
+    padding: 16px;
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.active:active {
+    background-color: var(--primary200);
+  }
+
+  .card-time {
+      display: flex;
+  }
+  
+.disable-btn {
+    background-color: var(--secondary);
+}
+
+.time {
+    text-align: center;
+    font-size: 14px;
+    color: var(--grey300);
+}
+.card-title {
+    font-size: 18px;
+}

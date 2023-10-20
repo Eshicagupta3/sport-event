@@ -2,37 +2,40 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .App-link {
   color: #61dafb;
+} 
+a, button {
+  cursor: pointer;
+}
+@font-face {
+  font-family: 'Assistant';
+  font-display: swap;
+  font-weight: 400;
+  src: local("Assistant"),
+    url("./font/Assistant-Regular.ttf") format("truetype");
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@font-face {
+  font-family: 'Assistant';
+  font-display: swap;
+  font-weight: 700;
+  src: local("Assistant"),
+  url("./font/Assistant-Bold.ttf") format("truetype");
+}
+
+body {
+   font-family: 'Assistant';
+}
+
+:root {
+  font-family: Assistant;
+  --secondary: #e9e9eb;
+  --primary100: #ffebf0;
+  --primary200: #ff7898;
+  --grey200: #e9e9eb;
+  --grey300: grey600;
+  --primary: #ff3e6c;
+  --grey800: #282c3f;
+  --white: #fff;
 }
