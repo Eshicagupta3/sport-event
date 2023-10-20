@@ -34,8 +34,11 @@ body {
   --primary100: #ffebf0;
   --primary200: #ff7898;
   --grey200: #e9e9eb;
-  --grey300: grey600;
+  --grey300: #d4d5d8;
   --primary: #ff3e6c;
   --grey800: #282c3f;
   --white: #fff;
+  --orange100: #be4a2a;
+  --green100: #03a685;
+  --yellow100: #ffaa01;
 }

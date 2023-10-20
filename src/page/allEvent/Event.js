@@ -2,12 +2,12 @@ import React, { useCallback, useContext, useMemo } from "react";
 import EventCard from "../../components/eventCard";
 import { MAX_EVENT_THRESHOLD } from "../../components/eventCard/constants";
 import { eventClash, userEventExist } from "../../components/eventCard/util";
+import { useToast } from "../../components/snackbar/useToast";
 import { EventContext, EventFnContext } from "../../context";
 import { REMOVE_EVENT, SELECT_EVENT } from "../../context/action";
 
 const SingleEvent = React.memo(
-  ({ event, selectedEvents, onRemoveEventClick }) => {
-    const { dispatch } = useContext(EventFnContext);
+  ({ event, selectedEvents, onRemoveEventClick, toast, dispatch }) => {
     const isEventSelected = userEventExist(event.id, selectedEvents);
     const isEventDisable = useMemo(() => {
       return (
@@ -24,7 +24,10 @@ const SingleEvent = React.memo(
         type: SELECT_EVENT,
         payload: event,
       });
-    }, [dispatch, event, isEventDisable]);
+      toast.info(
+        'Event Selected'
+      );
+    }, [dispatch, event, isEventDisable, toast]);
 
     const btnText = isEventSelected ? "REMOVE" : "SELECT";
     return (
@@ -47,14 +50,18 @@ const SingleEvent = React.memo(
 const Events = () => {
   const { allEvents, selectedEvents } = useContext(EventContext);
   const { dispatch } = useContext(EventFnContext);
+  const toast = useToast();
   const onRemoveEventClick = useCallback(
     (eventId) => {
       dispatch({
         type: REMOVE_EVENT,
         payload: eventId,
       });
+      toast.info(
+        'Event Removed From Selected Events'
+      );
     },
-    [dispatch]
+    [dispatch, toast]
   );
   return (
     <ul className="allevents-container">
@@ -62,6 +69,8 @@ const Events = () => {
         <SingleEvent
           key={event.id}
           event={event}
+          toast={toast}
+          dispatch={dispatch}
           selectedEvents={selectedEvents}
           onRemoveEventClick={onRemoveEventClick}
         />

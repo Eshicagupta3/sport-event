@@ -1,10 +1,10 @@
 import React, { useMemo, useReducer } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Header } from "../components/Header";
+import { ToastProvider } from "../components/snackbar/useToast";
 import { EventContext, EventFnContext, INITIAL_DATA } from "../context";
 import { eventReducer } from "../context/action";
 import "./page.css";
-
 
 const PageLayout = () => {
   const [eventData, dispatch] = useReducer(eventReducer, INITIAL_DATA);
@@ -29,11 +29,13 @@ const PageLayout = () => {
         <Header path={path} />
       </header>
       <section className="sport-events">
-        <EventFnContext.Provider value={storeFnValue}>
-          <EventContext.Provider value={storeValue}>
-            <Outlet />
-          </EventContext.Provider>
-        </EventFnContext.Provider>
+        <ToastProvider>
+          <EventFnContext.Provider value={storeFnValue}>
+            <EventContext.Provider value={storeValue}>
+              <Outlet />
+            </EventContext.Provider>
+          </EventFnContext.Provider>
+        </ToastProvider>
       </section>
     </main>
   );

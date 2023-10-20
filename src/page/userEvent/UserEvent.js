@@ -1,20 +1,25 @@
 import React, { useCallback, useContext } from "react";
 import { Link } from "react-router-dom";
 import EventCard from "../../components/eventCard";
+import { useToast } from "../../components/snackbar/useToast";
 import { EventContext, EventFnContext } from "../../context";
 import { REMOVE_EVENT } from "../../context/action";
 
 const UserEvents = () => {
   const { selectedEvents } = useContext(EventContext);
   const { dispatch } = useContext(EventFnContext);
+  const toast = useToast();
   const onEventClick = useCallback(
     (eventId) => {
       dispatch({
         type: REMOVE_EVENT,
         payload: eventId,
       });
+      toast.info(
+        'Event Removed From Selected Events'
+      );
     },
-    [dispatch]
+    [dispatch, toast]
   );
   if (!selectedEvents || selectedEvents.length === 0) {
     return (
