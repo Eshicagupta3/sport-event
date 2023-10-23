@@ -6,13 +6,19 @@ import useFetch from "../../hook/useFetch";
 import UserEvents from "./UserEvent";
 
 const UserEventsPage = () => {
-  const { loading, pageError } = useFetch({
+  const { loading, pageError, fetchData } = useFetch({
     apiFn: fetchUserEventData,
     action: UPDATE_SELCTED_EVENT,
   });
-  console.log("loading",loading)
   if (pageError) {
-    return <div test-id="page-error" className="page-error">{pageError}</div>;
+    return (
+      <div test-id="page-error" className="page-error">
+        {pageError}
+        <button onClick={fetchData} className="retry-button">
+          Retry
+        </button>
+      </div>
+    );
   }
   if (loading) {
     return <PageLoader />;

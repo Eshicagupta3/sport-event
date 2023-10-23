@@ -1,61 +1,69 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { rest } from "msw";
+import { setupServer } from "msw/node";
 import React, { useReducer } from "react";
-import { MemoryRouter } from "react-router-dom";
-import UserEventsPage from ".";
+import AllEventsPage from ".";
+import { ALL_EVENT_ROUTE } from "../../api/constants";
+import { ToastProvider } from "../../components/snackbar/useToast";
 import { EventContext, EventFnContext } from "../../context";
 import { eventReducer } from "../../context/action";
 import { ALL_EVENTS_DATA } from "../../mockData";
-import { ALL_USER_EVENTS_DATA } from "../../mockData/userEvent";
 
-jest.mock("../../api/event", () => ({
-  __esModule: true,
-  fetchUserEventData: () => ({ data: null }),
-}));
+const server = setupServer(
+  rest.get(ALL_EVENT_ROUTE, (req, res, ctx) => {
+    return res(ctx.json(ALL_EVENTS_DATA));
+  })
+);
+
 const Component = () => {
   const [eventData, dispatch] = useReducer(eventReducer, {
     allEvents: ALL_EVENTS_DATA,
-    selectedEvents: ALL_USER_EVENTS_DATA,
+    selectedEvents: [],
   });
   return (
-    <MemoryRouter>
+    <ToastProvider>
       <EventFnContext.Provider value={{ dispatch }}>
         <EventContext.Provider value={eventData}>
-          <UserEventsPage />
+          <AllEventsPage />
         </EventContext.Provider>
       </EventFnContext.Provider>
-    </MemoryRouter>
+    </ToastProvider>
   );
 };
 
-describe("Render User Event Page", () => {
+describe("Render All Event Page", () => {
   it("show page Loader", () => {
     render(<Component />);
     expect(screen.getByTestId("page-loader")).toBeInTheDocument();
   });
-  it("show user event card data", async () => {
+  it("show event card data", async () => {
+    server.listen();
     render(<Component />);
+    server.close();
+
     await waitFor(async () => {
       const items = screen.getAllByTestId("event-card");
-      expect(items.length).toBe(1);
+      expect(items.length).toBe(15);
     });
   });
 });
 
-describe("Remove User Event", () => {
-  it("remove user event", async () => {
+describe("Select User Event", () => {
+  it("User Event get Selected and Show Remove Button", async () => {
+    server.listen();
     render(<Component />);
+    server.close();
     await waitFor(async () => {
       const items = screen.getAllByTestId("event-card");
-      expect(items.length).toBe(1);
+      expect(items.length).toBe(15);
     });
-    expect(screen.getByText("REMOVE")).toBeInTheDocument();
-    const btns = screen.getAllByText("REMOVE");
-    btns.forEach((btn)=>{
-      fireEvent.click(btn);
-    })
+    const btn = screen.getAllByTestId("card-btn");
+    if (btn.length) {
+      fireEvent.click(btn[0]);
+      fireEvent.click(btn[1]);
+    }
     await waitFor(async () => {
-      expect(screen.getByTestId("all-event-btn")).toBeInTheDocument();
-
+      expect(screen.getAllByText("REMOVE")).toHaveLength(2);
     });
   });
 });

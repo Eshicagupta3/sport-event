@@ -1,15 +1,24 @@
-.App {
-  text-align: center;
-}
-
-.App-link {
-  color: #61dafb;
-} 
-a, button {
+a,
+button {
   cursor: pointer;
 }
+
+.sports-event-home {
+  color: var(--white);
+  padding: 32px;
+  display: flex;
+  background: rgba(0, 0, 0, 0.2);
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+.sports-event-home h1 {
+  margin: 0;
+  font-size: 5.5rem;
+  text-align: center;
+}
 @font-face {
-  font-family: 'Assistant';
+  font-family: "Assistant";
   font-display: swap;
   font-weight: 400;
   src: local("Assistant"),
@@ -17,25 +26,24 @@ a, button {
 }
 
 @font-face {
-  font-family: 'Assistant';
+  font-family: "Assistant";
   font-display: swap;
   font-weight: 700;
-  src: local("Assistant"),
-  url("./font/Assistant-Bold.ttf") format("truetype");
+  src: local("Assistant"), url("./font/Assistant-Bold.ttf") format("truetype");
 }
 
 body {
-   font-family: 'Assistant';
+  font-family: "Assistant";
 }
 
 :root {
   font-family: Assistant;
   --secondary: #e9e9eb;
-  --primary100: #ffebf0;
-  --primary200: #ff7898;
+  --primary100: #ffb43f33;
+  --primary200: #ffb43f99;
   --grey200: #e9e9eb;
   --grey300: #d4d5d8;
-  --primary: #ff3e6c;
+  --primary: #ffb43fcc;
   --grey800: #282c3f;
   --white: #fff;
   --orange100: #be4a2a;

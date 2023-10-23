@@ -2,21 +2,23 @@ import React, { useCallback, useContext } from "react";
 import { Link } from "react-router-dom";
 import EventCard from "../../components/eventCard";
 import { useToast } from "../../components/snackbar/useToast";
+import { EVENT_REMOVED_TEXT } from "../../constants";
 import { EventContext, EventFnContext } from "../../context";
 import { REMOVE_EVENT } from "../../context/action";
+import { SportEventType } from "../../type";
 
 const UserEvents = () => {
   const { selectedEvents } = useContext(EventContext);
   const { dispatch } = useContext(EventFnContext);
   const toast = useToast();
   const onEventClick = useCallback(
-    (eventId) => {
-      dispatch({
+    (eventId: string) => {
+      dispatch && dispatch({
         type: REMOVE_EVENT,
         payload: eventId,
       });
       toast.info(
-        'Event Removed From Selected Events'
+        EVENT_REMOVED_TEXT
       );
     },
     [dispatch, toast]
@@ -32,7 +34,7 @@ const UserEvents = () => {
   }
   return (
     <ul className="allevents-container">
-      {selectedEvents?.map((event) => (
+      {selectedEvents?.map((event: SportEventType) => (
         <EventCard
           key={event.id}
           eventId={event.id}

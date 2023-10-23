@@ -1,13 +1,19 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import { EventFnContext } from "../context";
-const useFetch = ({ apiFn, payload, action }) => {
+
+type UseFetchType =  {
+  apiFn: (arg: any) => Promise<any>,
+  payload?: any,
+  action: string
+}
+
+const useFetch = ({ apiFn, payload, action }: UseFetchType) => {
   const { dispatch } = useContext(EventFnContext);
   const [loading, setLoading] = useState(true);
-  const [pageError, setPageError] = useState(false);
+  const [pageError, setPageError] = useState<boolean|string>(false);
   const fetchData = useCallback(async () => {
     setLoading(true);
     const { data, err } = await apiFn(payload);
-    console.log(data,"data")
     if (err) {
       setPageError("Error in Loading. Please Try Again");
       return;
@@ -21,7 +27,7 @@ const useFetch = ({ apiFn, payload, action }) => {
   return {
     loading,
     pageError,
-    // pageData,
+    fetchData,
   };
 };
 export default useFetch;

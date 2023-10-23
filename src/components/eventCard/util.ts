@@ -1,13 +1,21 @@
-export const userEventExist = (eventId, selectedEvents = []) => {
-  return selectedEvents.findIndex((event) => event.id === eventId) >= 0;
+import { SportEventType } from "../../type";
+
+export const userEventExist = (
+  eventId: string,
+  selectedEvents: SportEventType[] | []
+) => {
+  return (
+    selectedEvents.findIndex((event: SportEventType) => event.id === eventId) >=
+    0
+  );
 };
 
-export const removeUserSelectedEvent = (eventId, selectedEvents) => {
-  return selectedEvents.filter((id) => id !== eventId);
-};
-
-export const eventClash = (startTime, endTime, selectedEvents) => {
-  if (!startTime || !endTime || selectedEvents.length == 0) {
+export const eventClash = (
+  startTime: string,
+  endTime: string,
+  selectedEvents: SportEventType[] | []
+) => {
+  if (!startTime || !endTime || selectedEvents.length === 0) {
     return false;
   }
   let isClash = false;
@@ -28,14 +36,14 @@ export const eventClash = (startTime, endTime, selectedEvents) => {
   return isClash;
 };
 
-export const getTimeFormat = (time) => {
+export const getTimeFormat = (time: string) => {
   if (!time) {
     return "";
   }
   const date = new Date(time);
   const hrs = date.getHours();
-  let min = date.getMinutes();
-  min = min < 10 ? "0" + min : min;
+  let min: string | number = date.getMinutes();
+  min = min < 10 ? "0" + min : min.toString();
   const month = date.toLocaleString("default", { month: "short" });
   const day = date.toLocaleString("default", { weekday: "short" });
   return (

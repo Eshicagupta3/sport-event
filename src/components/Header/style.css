@@ -1,0 +1,20 @@
+.header-tabs {
+    display: flex;
+    gap: 16px;
+   
+  
+  }
+  .header-tabs a, button {
+    text-decoration: solid;
+    color: var(--white)
+  }
+
+  .rule-tab {
+    background: transparent;
+    border: none;
+    text-decoration: solid;
+    color: var(--white);
+    font-size: 1rem;
+    font-family: 'Assistant';
+  }
+  

@@ -1,32 +1,50 @@
 import React, { useCallback, useContext, useMemo } from "react";
 import EventCard from "../../components/eventCard";
-import { MAX_EVENT_THRESHOLD } from "../../components/eventCard/constants";
 import { eventClash, userEventExist } from "../../components/eventCard/util";
 import { useToast } from "../../components/snackbar/useToast";
+import {
+  EVENT_ADDED_TEXT,
+  EVENT_REMOVED_TEXT,
+  MAX_EVENT_THRESHOLD
+} from "../../constants";
 import { EventContext, EventFnContext } from "../../context";
 import { REMOVE_EVENT, SELECT_EVENT } from "../../context/action";
+import { SportEventType } from "../../type";
 
+type SingleEventType = {
+  event: SportEventType;
+  selectedEvents: SportEventType[] | [];
+  onRemoveEventClick: (arg: string) => void;
+  toast: any;
+  dispatch: React.Dispatch<{type: string, payload: any}> | null;
+  eventThresholdReached: boolean;
+};
 const SingleEvent = React.memo(
-  ({ event, selectedEvents, onRemoveEventClick, toast, dispatch }) => {
+  ({
+    event,
+    selectedEvents,
+    onRemoveEventClick,
+    toast,
+    dispatch,
+    eventThresholdReached,
+  }: SingleEventType) => {
     const isEventSelected = userEventExist(event.id, selectedEvents);
     const isEventDisable = useMemo(() => {
       return (
         !isEventSelected &&
-        (selectedEvents.length === MAX_EVENT_THRESHOLD ||
+        (eventThresholdReached ||
           eventClash(event.start_time, event.end_time, selectedEvents))
       );
-    }, [selectedEvents, event, isEventSelected]);
+    }, [selectedEvents, event, isEventSelected, eventThresholdReached]);
     const onEventClick = useCallback(() => {
       if (isEventDisable) {
         return;
       }
-      dispatch({
+      dispatch && dispatch({
         type: SELECT_EVENT,
         payload: event,
       });
-      toast.info(
-        'Event Selected'
-      );
+      toast.info(EVENT_ADDED_TEXT);
     }, [dispatch, event, isEventDisable, toast]);
 
     const btnText = isEventSelected ? "REMOVE" : "SELECT";
@@ -52,17 +70,16 @@ const Events = () => {
   const { dispatch } = useContext(EventFnContext);
   const toast = useToast();
   const onRemoveEventClick = useCallback(
-    (eventId) => {
-      dispatch({
+    (eventId: string) => {
+      dispatch && dispatch({
         type: REMOVE_EVENT,
         payload: eventId,
       });
-      toast.info(
-        'Event Removed From Selected Events'
-      );
+      toast.info(EVENT_REMOVED_TEXT);
     },
     [dispatch, toast]
   );
+  const eventThresholdReached = selectedEvents.length === MAX_EVENT_THRESHOLD;
   return (
     <ul className="allevents-container">
       {allEvents?.map((event) => (
@@ -72,6 +89,7 @@ const Events = () => {
           toast={toast}
           dispatch={dispatch}
           selectedEvents={selectedEvents}
+          eventThresholdReached={eventThresholdReached}
           onRemoveEventClick={onRemoveEventClick}
         />
       ))}

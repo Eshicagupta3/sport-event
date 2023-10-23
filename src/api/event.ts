@@ -2,7 +2,7 @@ import { ALL_EVENTS_DATA } from "../mockData";
 import { ALL_EVENT_ROUTE } from "./constants";
 
 // TODO: CAN ADD PAGE SIZE IN API FOR PAGINATION
-export const fetchAllEventData = async (pageSize, userId) => {
+export const fetchAllEventData = async (pageSize?: string, userId?: string) => {
   try {
     const response = await fetch(ALL_EVENT_ROUTE, {
       method: "get",
@@ -29,10 +29,10 @@ export const fetchAllEventData = async (pageSize, userId) => {
   }
 };
 
-export const fetchUserEventData = (userId) => {
+export const fetchUserEventData = (userId?: string) => {
   return new Promise((res, rej) => {
     setTimeout(() => {
       res({data: null});
-    }, [1000]);
+    }, 1000);
   });
 };

@@ -4,6 +4,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: var(--white);
+  background-color: #333333;
 }
 
 .header-profile {
@@ -19,25 +21,13 @@
   border-radius: 100%;
 }
 
-.header-tabs {
-  display: flex;
-  gap: 16px;
-}
-.header-tabs a {
-  color: var(--grey800);
-  text-decoration: solid;
-}
-
-.sport-events {
-  padding: 64px;
-}
-
 .allevents-container {
   display: flex;
   flex-wrap: wrap;
   gap: 32px;
   padding: 0;
-  justify-content: flex-start;
+  padding: 16px;
+  justify-content: center;
 }
 
 .page-error {
@@ -49,11 +39,8 @@
   gap: 16px;
 }
 
-.header-tabs .active {
-  color: var(--primary);
-}
-
-.allevent {
+.allevent,
+.retry-button {
   padding: 16px;
   background-color: var(--primary);
   border: none;
@@ -71,7 +58,7 @@
 }
 
 @media screen and (max-width: 480px) {
-    .allevents-container {
-        justify-content: center;
-    }
+  .allevents-container {
+    justify-content: center;
+  }
 }

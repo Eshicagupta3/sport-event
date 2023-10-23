@@ -1,52 +1,55 @@
 .event-card {
-    border: 1px solid var(--secondary);
-    padding: 16px;
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 16px;
-    align-items: center;
-    
+  border: 1px solid var(--secondary);
+  padding: 16px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  align-items: center;
 }
 .card-selected button {
-    color: var(--primary);
-    background-color: var(--white);
-    border: 1px solid var(--primary);
+  color: var(--primary);
+  background-color: var(--white);
+  border: 1px solid var(--primary);
+}
+.event-time {
+  text-align: center;
+  margin-bottom: 16px;
+  gap: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.event-time div {
+  font-size: 0.8rem;
+  font-weight: bold;
 }
 .card-title {
-    font-weight: bold;
-}
-.event-card p,time {
-    color:  var(--grey800);
-    margin-bottom: 16px;
+  font-weight: bold;
 }
 .card-btn {
-    padding: 16px;
-    background-color: var(--primary);
-    color: var(--white);
-    border: none;
-    border-radius: 8px;
-    width: 100%;
+  padding: 16px;
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  width: 100%;
 }
 
 .active:active {
-    background-color: var(--primary200);
-  }
+  background-color: var(--primary200);
+}
 
-  .card-time {
-      display: flex;
-  }
-  
 .disable-btn {
-    background-color: var(--secondary);
-    cursor: not-allowed;
+  background-color: var(--secondary);
+  cursor: not-allowed;
 }
 
-.time {
-    text-align: center;
-    font-size: 14px;
-    color: var(--grey300);
-}
 .card-title {
-    font-size: 18px;
+  font-size: 1rem;
+}
+
+
+time {
+  font-size: 0.9rem;
 }
