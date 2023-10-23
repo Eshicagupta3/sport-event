@@ -9,6 +9,11 @@
     color: var(--white)
   }
 
+
+  .header-tabs .active {
+    color: var(--primary)
+  }
+
   .rule-tab {
     background: transparent;
     border: none;
