@@ -2,7 +2,7 @@ import React, { useCallback, useContext } from "react";
 import { Link } from "react-router-dom";
 import EventCard from "../../components/eventCard";
 import { useToast } from "../../components/snackbar/useToast";
-import { EVENT_REMOVED_TEXT } from "../../constants";
+import { ALL_EVENTS_ROUTE, EVENT_REMOVED_TEXT } from "../../constants";
 import { EventContext, EventFnContext } from "../../context";
 import { REMOVE_EVENT } from "../../context/action";
 import { SportEventType } from "../../type";
@@ -27,7 +27,7 @@ const UserEvents = () => {
     return (
       <div className="no-userEvent">
         <button data-testid="all-event-btn" className="allevent">
-          <Link to="/">Go All Events</Link>
+          <Link to={ALL_EVENTS_ROUTE}>Go All Events</Link>
         </button>
       </div>
     );
