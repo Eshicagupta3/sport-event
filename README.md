@@ -25,8 +25,8 @@ Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 
-![Alt text](/screenshot/s1.png?raw=true "Home Page")
-![Alt text](/screenshot/s3.png?raw=true "All Events Page")
-![Alt text](/screenshot/s4.png?raw=true "All Events Page")
-![Alt text](/screenshot/s7.png?raw=true "Desktop All Events")
-![Alt text](/screenshot/s5.png?raw=true "Modal")
+![Alt text](/screenshot/s1.png?raw=true | width=300)
+![Alt text](/screenshot/s3.png?raw=true | width=300)
+![Alt text](/screenshot/s4.png?raw=true | width=300)
+![Alt text](/screenshot/s7.png?raw=true | width=300)
+![Alt text](/screenshot/s5.png?raw=true | width=300)
