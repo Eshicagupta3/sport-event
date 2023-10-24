@@ -48,7 +48,7 @@ export const ToastProvider = ({ children }: { children: any }) => {
   const [toasts, dispatch] = useReducer(toastReducer, []);
 
   const toast = (message: string, toastProps: ToastType) => {
-    const duration = toastProps?.duration || 3000;
+    const duration = toastProps?.duration || 2000;
     const id = toastProps.id || Math.random().toString(36).substring(2, 9);
 
     const newToast: ToastType = {

@@ -4,3 +4,4 @@ export const MY_EVENT_ROUTE = "/my-events";
 export const ALL_EVENTS_ROUTE = "/all-events";
 export const HOME_ROUTE="/"
 export const MAX_EVENT_THRESHOLD = 3 
+export const EVENT_THRESHOLD_REACHED = `You can participate only in ${MAX_EVENT_THRESHOLD} event`

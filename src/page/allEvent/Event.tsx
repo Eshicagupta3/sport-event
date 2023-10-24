@@ -5,7 +5,8 @@ import { useToast } from "../../components/snackbar/useToast";
 import {
   EVENT_ADDED_TEXT,
   EVENT_REMOVED_TEXT,
-  MAX_EVENT_THRESHOLD
+  EVENT_THRESHOLD_REACHED,
+  MAX_EVENT_THRESHOLD,
 } from "../../constants";
 import { EventContext, EventFnContext } from "../../context";
 import { REMOVE_EVENT, SELECT_EVENT } from "../../context/action";
@@ -16,7 +17,10 @@ type SingleEventType = {
   selectedEvents: SportEventType[] | [];
   onRemoveEventClick: (arg: string) => void;
   toast: any;
-  dispatch: React.Dispatch<{type: string, payload:  SportEventType | string }> | null;
+  dispatch: React.Dispatch<{
+    type: string;
+    payload: SportEventType | string;
+  }> | null;
   eventThresholdReached: boolean;
 };
 const SingleEvent = React.memo(
@@ -40,12 +44,17 @@ const SingleEvent = React.memo(
       if (isEventDisable) {
         return;
       }
-      dispatch && dispatch({
-        type: SELECT_EVENT,
-        payload: event,
-      });
-      toast.info(EVENT_ADDED_TEXT);
-    }, [dispatch, event, isEventDisable, toast]);
+      dispatch &&
+        dispatch({
+          type: SELECT_EVENT,
+          payload: event,
+        });
+       let toastText =  EVENT_ADDED_TEXT;
+      if (selectedEvents.length === MAX_EVENT_THRESHOLD - 1) {
+        toastText += '. ' + EVENT_THRESHOLD_REACHED
+      }
+      toast.info(toastText);
+    }, [dispatch, event, isEventDisable, toast, selectedEvents.length]);
 
     const btnText = isEventSelected ? "REMOVE" : "SELECT";
     return (
@@ -71,10 +80,11 @@ const Events = () => {
   const toast = useToast();
   const onRemoveEventClick = useCallback(
     (eventId: string) => {
-      dispatch && dispatch({
-        type: REMOVE_EVENT,
-        payload: eventId,
-      });
+      dispatch &&
+        dispatch({
+          type: REMOVE_EVENT,
+          payload: eventId,
+        });
       toast.info(EVENT_REMOVED_TEXT);
     },
     [dispatch, toast]
