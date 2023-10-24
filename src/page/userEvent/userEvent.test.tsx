@@ -2,7 +2,7 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import React, { useReducer } from "react";
 import { MemoryRouter } from "react-router-dom";
 import UserEventsPage from ".";
-import { ToastProvider } from "../../components/snackbar/useToast";
+import { ToastProvider } from "../../hook/useToast";
 import { EventContext, EventFnContext } from "../../context";
 import { eventReducer } from "../../context/action";
 import { ALL_EVENTS_DATA } from "../../mockData";

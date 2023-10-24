@@ -4,7 +4,7 @@ import { setupServer } from "msw/node";
 import React, { useReducer } from "react";
 import AllEventsPage from ".";
 import { ALL_EVENT_ROUTE } from "../../api/constants";
-import { ToastProvider } from "../../components/snackbar/useToast";
+import { ToastProvider } from "../../hook/useToast";
 import { EventContext, EventFnContext } from "../../context";
 import { eventReducer } from "../../context/action";
 import { ALL_EVENTS_DATA } from "../../mockData";

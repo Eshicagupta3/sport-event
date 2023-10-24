@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer } from "react";
 import ReactDOM from "react-dom";
-import Snackbar from "./Snackbar";
+import Snackbar from "../components/snackbar/Snackbar";
 
 const types = {
   ADD_TOAST: "ADD_TOAST",

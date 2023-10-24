@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo } from "react";
 import EventCard from "../../components/eventCard";
 import { eventClash, userEventExist } from "../../components/eventCard/util";
-import { useToast } from "../../components/snackbar/useToast";
+import { useToast } from "../../hook/useToast";
 import {
   EVENT_ADDED_TEXT,
   EVENT_REMOVED_TEXT,

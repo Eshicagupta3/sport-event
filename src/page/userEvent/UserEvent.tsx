@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from "react";
 import { Link } from "react-router-dom";
 import EventCard from "../../components/eventCard";
-import { useToast } from "../../components/snackbar/useToast";
+import { useToast } from "../../hook/useToast";
 import { ALL_EVENTS_ROUTE, EVENT_REMOVED_TEXT } from "../../constants";
 import { EventContext, EventFnContext } from "../../context";
 import { REMOVE_EVENT } from "../../context/action";
