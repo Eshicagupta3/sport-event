@@ -33,7 +33,7 @@ const UserEvents = () => {
     );
   }
   return (
-    <ul className="allevents-container">
+    <ul aria-label="all events card" className="allevents-container">
       {selectedEvents?.map((event: SportEventType) => (
         <EventCard
           key={event.id}

@@ -11,7 +11,7 @@ export const Header = ({ path }: {path: string}) => {
   };
   
   return (
-    <section className="header-tabs">
+    <nav className="header-tabs">
       <Link
         data-testid="home-tab"
         to={HOME_ROUTE}
@@ -41,6 +41,6 @@ export const Header = ({ path }: {path: string}) => {
           <RuleModal onClick={onRuleClick} />
         </Suspense>
       )}
-    </section>
+    </nav>
   );
 };

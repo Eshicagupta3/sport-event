@@ -91,7 +91,7 @@ const Events = () => {
   );
   const eventThresholdReached = selectedEvents.length === MAX_EVENT_THRESHOLD;
   return (
-    <ul className="allevents-container">
+    <ul aria-label="my events card" className="allevents-container">
       {allEvents?.map((event) => (
         <SingleEvent
           key={event.id}

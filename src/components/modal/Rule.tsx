@@ -2,7 +2,7 @@ import React from "react";
 import "./style.css";
 const RuleModal = () => {
   return (
-    <ul className="events-rule">
+    <ul aria-label="Sport Event Participation Rule" className="events-rule">
       <li>You can partipicate in 3 events</li>
       <li>Timing of selected events cannot clash </li>
     </ul>
@@ -15,7 +15,7 @@ const Modal = ({ onClick }: { onClick: () => void }) => {
       <div className="card">
         <button
           onClick={onClick}
-          aria-label="close-rule-modal"
+          aria-label="close rule modal"
           className="cross-button"
         >
           x

@@ -22,9 +22,9 @@ const PageLayout = () => {
   return (
     <main className="sports-layout">
       <header className="sport-header">
-        <section className="header-profile">
-          <div className="profile-img"></div>
-          <div className="profile-name">Isha</div>
+        <section  className="header-profile">
+          <div className="profile-img"/>
+          <p aria-label="user profile name" className="profile-name">Isha</p>
         </section>
         <Header path={path} />
       </header>

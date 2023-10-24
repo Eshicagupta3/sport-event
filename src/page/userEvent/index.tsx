@@ -13,7 +13,7 @@ const UserEventsPage = () => {
   if (pageError) {
     return (
       <div test-id="page-error" className="page-error">
-        {pageError}
+        <div className="">{pageError}</div> 
         <button onClick={fetchData} className="retry-button">
           Retry
         </button>

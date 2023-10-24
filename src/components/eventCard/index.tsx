@@ -51,6 +51,7 @@ const EventCard = React.memo(
           data-testid="card-btn"
           className={`card-btn ${isEventDisable ? "disable-btn" : "active"}`}
           onClick={onBtnClick}
+          tabIndex={isEventDisable ? -1 : 0}
         >
           {btnText}
         </button>

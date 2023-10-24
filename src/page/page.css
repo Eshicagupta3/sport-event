@@ -20,6 +20,9 @@
   background: var(--primary);
   border-radius: 100%;
 }
+.profile-name {
+  margin: 0;
+}
 
 .allevents-container {
   display: flex;

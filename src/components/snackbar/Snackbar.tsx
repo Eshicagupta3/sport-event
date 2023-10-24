@@ -27,7 +27,7 @@ function Snackbar({
   return (
     <div className={`wrapper ${type} ${toastClass}`} style={toastStyle}>
       {icon && <div className={"icon"}>{icon}</div>}
-      <span className="msg">{message}</span>
+      <span role="alert" aria-label={message} className="msg">{message}</span>
       {actionTitle && (
         <button
           className={"actionBtn"}
