@@ -24,9 +24,9 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
+<img src="/screenshot/s1.png?raw=true" width="300" >
+<img src="/screenshot/s3.png?raw=true" width="300" >
+<img src="/screenshot/s4.png?raw=true" width="300" >
+<img src="/screenshot/s7.png?raw=true" width="300" >
+<img src="/screenshot/s5.png?raw=true" width="300" >
 
-![Alt text](/screenshot/s1.png?raw=true | width=300)
-![Alt text](/screenshot/s3.png?raw=true | width=300)
-![Alt text](/screenshot/s4.png?raw=true | width=300)
-![Alt text](/screenshot/s7.png?raw=true | width=300)
-![Alt text](/screenshot/s5.png?raw=true | width=300)
