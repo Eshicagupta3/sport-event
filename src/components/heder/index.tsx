@@ -9,6 +9,7 @@ export const Header = ({ path }: {path: string}) => {
   const onRuleClick = () => {
     setShow((data) => !data);
   };
+  
   return (
     <section className="header-tabs">
       <Link
