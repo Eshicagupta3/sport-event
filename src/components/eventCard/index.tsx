@@ -34,6 +34,7 @@ const EventCard = React.memo(
 
     return (
       <li
+        aria-label="Sport Event Details"
         data-testid="event-card"
         className={`event-card ${isEventSelected ? "card-selected" : ""}`}
       >

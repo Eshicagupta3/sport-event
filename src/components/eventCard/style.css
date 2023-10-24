@@ -6,6 +6,8 @@
   flex-direction: column;
   border-radius: 16px;
   align-items: center;
+  content-visibility: auto;
+  contain-intrinsic-size: 270px;
 }
 .card-selected button {
   color: var(--primary);
