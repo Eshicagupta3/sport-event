@@ -1,6 +1,6 @@
 import React, { useMemo, useReducer } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import { Header } from "../components/heder";
+import { Header } from "../components/header";
 import { ToastProvider } from "../hook/useToast";
 import { EventContext, EventFnContext, INITIAL_DATA } from "../context";
 import { eventReducer } from "../context/action";
