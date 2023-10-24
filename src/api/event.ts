@@ -1,12 +1,36 @@
 import { ALL_EVENTS_DATA } from "../mockData";
 import { ALL_EVENT_ROUTE } from "./constants";
 
+function timeoutPromise(
+  ms: number,
+  promise: Promise<Response>
+): Promise<Response> {
+  return new Promise((resolve, reject) => {
+    const timeoutId = setTimeout(() => {
+      reject(new Error("promise timeout"));
+    }, ms);
+    promise.then(
+      (res) => {
+        clearTimeout(timeoutId);
+        resolve(res);
+      },
+      (err) => {
+        clearTimeout(timeoutId);
+        reject(err);
+      }
+    );
+  });
+}
+
 // TODO: CAN ADD PAGE SIZE IN API FOR PAGINATION
 export const fetchAllEventData = async (pageSize?: string, userId?: string) => {
   try {
-    const response = await fetch(ALL_EVENT_ROUTE, {
-      method: "get",
-    });
+    const response = await timeoutPromise(
+      2000,
+      fetch(ALL_EVENT_ROUTE, {
+        method: "get",
+      })
+    );
     return response
       .json()
       .then((res) => {
@@ -14,7 +38,7 @@ export const fetchAllEventData = async (pageSize?: string, userId?: string) => {
           data: ALL_EVENTS_DATA,
           err: null,
         };
-      })
+      })    // PASS DUMMY DATA, THIS API ROUTE IS NOT WORKING
       .catch((err) => {
         return {
           data: ALL_EVENTS_DATA,
@@ -22,9 +46,10 @@ export const fetchAllEventData = async (pageSize?: string, userId?: string) => {
         };
       });
   } catch (err) {
+
     return {
-      data: ALL_EVENTS_DATA,
-      err: null,
+      data: null,
+      err: err,
     };
   }
 };
@@ -32,7 +57,7 @@ export const fetchAllEventData = async (pageSize?: string, userId?: string) => {
 export const fetchUserEventData = (userId?: string) => {
   return new Promise((res, rej) => {
     setTimeout(() => {
-      res({data: null});
+      res({ data: null });
     }, 1000);
   });
 };

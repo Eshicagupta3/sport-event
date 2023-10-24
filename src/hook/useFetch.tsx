@@ -2,7 +2,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import { EventFnContext } from "../context";
 
 type UseFetchType =  {
-  apiFn: (arg: any) => Promise<any>,
+  apiFn: (arg1: any) => Promise<any>,
   payload?: any,
   action: string
 }

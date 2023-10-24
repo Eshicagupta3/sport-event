@@ -1,4 +1,4 @@
-import { INITIAL_DATA } from ".";
+import { INITIAL_DATA, INITIAL_DATA_TYPE } from ".";
 import { removeSelectedEvent } from "./util";
 
 export const UPDATE_ALL_EVENT = "update_all_event";
@@ -7,7 +7,7 @@ export const SELECT_EVENT = "select_event";
 export const REMOVE_EVENT = "remove_event";
 
 export const eventReducer = (
-  state: any,
+  state: INITIAL_DATA_TYPE,
   action: {
     type: string;
     payload: any;
@@ -29,7 +29,7 @@ export const eventReducer = (
     case REMOVE_EVENT: {
       const newSelctedEvent = removeSelectedEvent(
         state.selectedEvents,
-        action.payload
+        action.payload as string
       );
       return { ...state, selectedEvents: newSelctedEvent };
     }

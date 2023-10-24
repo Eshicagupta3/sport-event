@@ -32,7 +32,7 @@ export const Header = ({ path }: {path: string}) => {
       >
         My Events
       </Link>
-      <button onClick={onRuleClick} className="rule-tab">
+      <button aria-haspopup onClick={onRuleClick} className="rule-tab">
         Rules
       </button>
       {show && (

@@ -28,7 +28,7 @@ export const eventClash = (
     }
     const eventSTime = new Date(event.start_time).getTime();
     const eventETime = new Date(event.end_time).getTime();
-    if (!(eventSTime > eTime || eventETime < sTime)) {
+    if (eventSTime <= eTime && eventETime >= sTime) {
       isClash = true;
       break;
     }

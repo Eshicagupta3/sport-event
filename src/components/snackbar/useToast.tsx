@@ -28,8 +28,8 @@ function createPortalElement() {
 }
 const portalEle = createPortalElement();
 const toastReducer = (
-  state: ToastType[] | [],
-  action: any
+  state: [] | ToastType[],
+  action: { type: string; payload: any }
 ) => {
   switch (action.type) {
     case types.ADD_TOAST:

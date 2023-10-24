@@ -16,7 +16,7 @@ type SingleEventType = {
   selectedEvents: SportEventType[] | [];
   onRemoveEventClick: (arg: string) => void;
   toast: any;
-  dispatch: React.Dispatch<{type: string, payload: any}> | null;
+  dispatch: React.Dispatch<{type: string, payload:  SportEventType | string }> | null;
   eventThresholdReached: boolean;
 };
 const SingleEvent = React.memo(
