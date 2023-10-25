@@ -26,7 +26,7 @@ function timeoutPromise(
 export const fetchAllEventData = async (pageSize?: string, userId?: string) => {
   try {
     const response = await timeoutPromise(
-      2000,
+      4000,
       fetch(ALL_EVENT_ROUTE, {
         method: "get",
       })
